@@ -557,6 +557,8 @@ class DNSIncoming(object):
         first = off
 
         while True:
+            if off > len(self.data):
+                break
             length = indexbytes(self.data, off)
             off += 1
             if length == 0:
@@ -831,9 +833,11 @@ class Engine(threading.Thread):
                         try:
                             self.readers[socket_].handle_read(socket_)
                         except Exception as e:  # TODO stop catching all Exceptions
-                            log.exception('Unknown error, possibly benign: %r', e)
+                            #log.exception('Unknown error, possibly benign: %r', e)
+                            pass
                 except Exception as e:  # TODO stop catching all Exceptions
-                    log.exception('Unknown error, possibly benign: %r', e)
+                    #log.exception('Unknown error, possibly benign: %r', e)
+                    pass
 
     def get_readers(self):
         result = []
