@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 from __future__ import absolute_import, division, print_function
 
+from io import open
+
 from os.path import abspath, dirname, join
 
 from setuptools import setup
 
 PROJECT_ROOT = abspath(dirname(__file__))
-with open(join(PROJECT_ROOT, 'README.rst')) as f:
+with open(join(PROJECT_ROOT, 'README.rst'), encoding='utf-8') as f:
     readme = f.read()
 
 version = (
@@ -43,6 +45,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
@@ -51,7 +54,7 @@ setup(
         'mDNS',
     ],
     install_requires=[
-        'enum34',
+        'enum-compat',
         'netifaces',
         'six',
     ],
